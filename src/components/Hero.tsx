@@ -14,9 +14,10 @@ export const Hero = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-mikasa-black via-mikasa-black/90 to-mikasa-red/20" />
       </div>
-      
-      <div className="container mx-auto px-4 z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+      <div className="container mx-auto px-6 z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Text Section */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -33,35 +34,39 @@ export const Hero = () => {
                 Revolutionary AI Trading
               </span>
             </motion.div>
-            
-            <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight">
-              Mikasa AI
+
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+              Mikasa AI{" "}
               <span className="text-mikasa-red">Trading</span>
             </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Experience the power of humanity's strongest AI trading companion. 
+
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+              Experience the power of humanity's strongest AI trading companion.
               Precision, strength, and unwavering determination in every trade.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-mikasa-red hover:bg-red-800 text-white px-8 py-6 text-lg rounded-xl 
-                transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
-              >
-                Start Trading Now
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-white border-white hover:bg-white/10 px-8 py-6 text-lg rounded-xl
-                transform transition-all duration-300 hover:scale-105 hover:border-mikasa-red"
-              >
-                View Trading Stats
-              </Button>
+              <a href="/stats">
+                <Button
+                  size="lg"
+                  className="bg-mikasa-red over:bg-red-800 text-white px-6 py-4 text-lg rounded-xl 
+                  transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
+                >
+                  Start Trading Now
+                </Button>
+              </a>
+              <a href="/stats">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-white border-white px-6 py-4 text-white-lg rounded-xl
+                  transform transition-all duration-300 hover:scale-105 hover:border-mikasa-red"
+                >
+                  View Trading Stats
+                </Button>
+              </a>
             </div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -85,6 +90,7 @@ export const Hero = () => {
             </motion.div>
           </motion.div>
 
+          {/* Image Section */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -99,7 +105,7 @@ export const Hero = () => {
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-mikasa-black to-transparent" />
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

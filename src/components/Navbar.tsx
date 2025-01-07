@@ -24,41 +24,42 @@ export const Navbar = () => {
         className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg border-b border-white/10"
       >
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          {/* Logo Section */}
+          <div className="flex items-center gap-3">
             <Bitcoin className="w-8 h-8 text-mikasa-red" />
             <span className="text-xl font-bold text-white">Mikasa AI</span>
           </div>
 
+          {/* Navbar Icons */}
           <div className="flex items-center gap-6">
-            <Button
-              variant="ghost"
-              className="text-white hover:text-mikasa-red hover:bg-transparent"
+            {/* Documentation Icon */}
+            <div
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-white/10 cursor-pointer"
               onClick={() => window.open("/documentation", "_blank")}
             >
-              <BookOpen className="w-5 h-5" />
-            </Button>
+              <BookOpen className="w-5 h-5 text-white" />
+            </div>
 
-            <Button
-              variant="outline"
-              className="bg-[#F97316] hover:bg-[#F97316]/80 text-white border-none"
+            {/* Trading Stats Icon */}
+            <a
+              href="/stats"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-white/10 cursor-pointer"
             >
-              <a href="/stats" className="flex items-center gap-2">
-                <ChartBar className="mr-2 h-4 w-4" />
-                View Trading Stats
-              </a>
-            </Button>
+              <ChartBar className="w-5 h-5 text-white" />
+            </a>
 
-            <Button 
-              className="bg-mikasa-red hover:bg-red-800 flex items-center gap-2"
+            {/* Wallet Icon */}
+            <div
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-transparent hover:bg-white/10 cursor-pointer"
               onClick={handleConnectWallet}
             >
-              <Wallet className="w-4 h-4" />
-              Connect Wallet
-            </Button>
+              <Wallet className="w-5 h-5 text-white" />
+            </div>
           </div>
         </div>
       </motion.div>
 
+      {/* Wallet Dialog */}
       <Dialog open={showWalletDialog} onOpenChange={setShowWalletDialog}>
         <DialogContent className="bg-gray-900 text-white border-gray-800">
           <DialogHeader>
@@ -68,7 +69,7 @@ export const Navbar = () => {
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col gap-4 mt-4">
-            <Button 
+            <Button
               className="bg-mikasa-red hover:bg-red-800 w-full flex items-center justify-center gap-2"
               onClick={handleConnectWallet}
             >
