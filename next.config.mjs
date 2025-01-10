@@ -21,7 +21,7 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
-  distDir: '.next', // Ensure the output directory is '.next' (default for Next.js)
+  distDir: 'dist', // Change the output directory to 'dist'
 };
 
 // Merge user configuration, if available
