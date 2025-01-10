@@ -12,18 +12,18 @@ interface CommandHistory {
 
 const getRandomMetric = () => {
   const metrics = [
-    "Titans neutralized: 42",
-    "Wall integrity: 78%",
+    "Titans eliminated: 42",
+    "Wall Maria integrity: 78%",
     "ODM gear fuel: 89%",
     "Survey Corps morale: 65%",
-    "Eren's anger level: 9001",
-    "Potato consumption rate: 156%",
-    "Levi's cleaning supplies: Critically low",
-    "Colossal Titan appearances: 3",
-    "Mikasa's scarf condition: Slightly frayed",
-    "Armin's strategic plans: 12",
-    "Beast Titan rock throws: 78",
-    "Hange's titan experiments: 23",
+    "Eren's rage meter: 9001",
+    "Potato inventory: 156",
+    "Thunder Spears: 23",
+    "Titan shifters known: 7",
+    "Scout regiment members: 89",
+    "Days since last breach: 3",
+    "Military supplies: 67%",
+    "Civilian casualties: 1,337",
   ]
   return metrics[Math.floor(Math.random() * metrics.length)]
 }
@@ -45,7 +45,7 @@ export default function Terminal() {
   }, [])
 
   const commands = {
-    help: () => `Available commands (try not to forget them this time):
+    help: () => `Available commands (try to keep up, recruit):
 ╭─ Navigation ───────────────────────╮
 │ github   Visit GitHub profile      │
 │ x        Visit X (Twitter)         │
@@ -66,23 +66,23 @@ export default function Terminal() {
     
     github: () => {
       window.open('https://github.com', '_blank')
-      return 'Opening GitHub... Try not to get lost in the code.'
+      return 'Opening GitHub... Try not to get eaten by bugs.'
     },
     
     x: () => {
       window.open('https://x.com', '_blank')
-      return 'Opening X... Because apparently that\'s what we call it now.'
+      return 'Opening X... Because 280 characters is all we need to fight titans.'
     },
     
     doc: () => {
       window.open('https://tinobritty.tech', '_blank')
-      return 'Opening documentation... Good luck understanding it.'
+      return 'Opening documentation... Knowledge is power against the titans.'
     },
 
     about: () => `MikasaAI: Your AI-powered developer assistant for streamlined application building.
-Just don't expect me to be as strong as the real Mikasa.`,
+As strong as a hundred developers, but with more attitude.`,
 
-    features: () => `✨ Features (because apparently we need these):
+    features: () => `✨ Features (pay attention, this is important):
 ╭─ Core Capabilities ─────────────────╮
 │ ⚡ Interactive CLI: Simple,         │
 │   user-friendly prompts            │
@@ -100,7 +100,7 @@ Just don't expect me to be as strong as the real Mikasa.`,
 │   Organized project files         │
 ╰────────────────────────────────────╯`,
 
-    roadmap: () => `Roadmap (assuming we survive the titans):
+    roadmap: () => `Roadmap (our path to victory):
 ╭─ Development Phases ───────────────╮
 │ 1️⃣  Phase 1: Token Launch         │
 │    Status: In Progress            │
@@ -119,12 +119,12 @@ Just don't expect me to be as strong as the real Mikasa.`,
       return ''
     },
 
-    status: () => `System Status (as if you really care)
+    status: () => `System Status (current battlefield conditions):
 ╭─ Core Systems ─────────────────────╮
 │ CPU............: ${Math.floor(Math.random() * 30) + 70}%         │
 │ Memory.........: ${Math.floor(Math.random() * 20) + 80}%         │
 │ Network........: Connected        │
-│ AI Core........: Sarcastic        │
+│ AI Core........: Combat Ready     │
 │ Security.......: Maximum          │
 ╰────────────────────────────────────╯
 ╭─ Battle Statistics ─────────────────╮
@@ -134,7 +134,7 @@ Just don't expect me to be as strong as the real Mikasa.`,
 ╰────────────────────────────────────╯`,
 
     chat: async (args: string) => {
-      if (!args) return "Oh, you want to chat? How about you start with an actual message, genius."
+      if (!args) return "If you're going to waste my time, at least say something."
       
       setHistory(prev => prev.map((item, i) => 
         i === prev.length - 1 ? { ...item, loading: true } : item
@@ -152,7 +152,7 @@ Just don't expect me to be as strong as the real Mikasa.`,
         const data = await response.json()
         return data.message
       } catch (error) {
-        return "Even AIs have bad days. Try again when the titans aren't breathing down our necks."
+        return "Communication disrupted. The titans must be interfering with our signals."
       } finally {
         setHistory(prev => prev.map((item, i) => 
           i === prev.length - 1 ? { ...item, loading: false } : item
@@ -183,7 +183,7 @@ Just don't expect me to be as strong as the real Mikasa.`,
       setHistory(prev => prev.map((item, i) => 
         i === prev.length - 1 ? { 
           ...item, 
-          output: `"${cmd}"? Did a titan eat your brain? Try 'help' if you're really that lost.`
+          output: `"${cmd}"? That's not a command, recruit. Type 'help' if you're lost.`
         } : item
       ))
     }
@@ -224,31 +224,31 @@ Just don't expect me to be as strong as the real Mikasa.`,
       <div className="absolute inset-0 pointer-events-none">
         <div className="h-full w-full opacity-10 bg-[linear-gradient(0deg,transparent_0%,rgba(255,255,255,0.1)_50%,transparent_100%)] animate-scanline" />
       </div>
-      <div className="flex items-center gap-2 pb-4">
-        <div className="h-3 w-3 rounded-full bg-red-500"></div>
+      <div className="flex items-center gap-2 pb-4 border-b border-red-500/20">
+        <div className="h-3 w-3 rounded-full bg-red-500 animate-pulse"></div>
         <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
         <div className="h-3 w-3 rounded-full bg-green-500"></div>
-        <div className="ml-2 text-xs text-red-400/70">MikasaAI v1.0.1 - Probably doomed</div>
+        <div className="ml-2 text-xs text-red-400/70">MikasaAI Terminal v1.0.1</div>
       </div>
       <div ref={terminalRef} className="h-full overflow-auto pb-4 space-y-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-red-800/20">
-        <div className="text-red-400 font-bold space-y-1">
+        <div className="text-red-400 font-bold space-y-1 py-4">
           <div className="flex items-center gap-2">
             <span className="text-red-500">MikasaAI</span>
-            <span className="text-xs text-red-400/70">Reluctantly operational.</span>
+            <span className="text-xs text-red-400/70">Combat systems initialized.</span>
           </div>
-          <div className="text-sm text-red-400/70">Type 'help' for commands, or don't. I don't care.</div>
+          <div className="text-sm text-red-400/70">Type 'help' for available commands.</div>
         </div>
         {history.map((item, i) => (
-          <div key={i} className="space-y-1">
+          <div key={i} className="space-y-1 py-2 border-b border-red-500/10">
             <div className="flex items-center gap-2">
               <span className="text-red-500">$</span>
-              <span>{item.command}</span>
+              <span className="font-bold">{item.command}</span>
             </div>
             <div className="ml-4 whitespace-pre-wrap text-red-300">
               {item.loading ? (
                 <div className="flex items-center gap-2 text-red-400/70">
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Ugh, fine. Processing your request...
+                  Processing request...
                 </div>
               ) : (
                 item.output
@@ -256,7 +256,7 @@ Just don't expect me to be as strong as the real Mikasa.`,
             </div>
           </div>
         ))}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 pt-2">
           <span className="text-red-500">$</span>
           <input
             type="text"

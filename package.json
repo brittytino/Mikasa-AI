@@ -58,11 +58,11 @@
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.6",
     "zod": "^3.24.1",
-    "ai": "latest",
-    "@ai-sdk/openai": "latest",
     "@react-three/fiber": "latest",
     "@react-three/drei": "latest",
-    "three": "latest"
+    "three": "latest",
+    "ai": "latest",
+    "@ai-sdk/openai": "latest"
   },
   "devDependencies": {
     "@types/node": "^22",
